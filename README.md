@@ -11,7 +11,7 @@ More **institutional oversight** than CrewAI, more **real-time visibility** than
 <p align="center">
   <a href="#-quick-start">🚀 Quick Start</a> ·
   <a href="#-architecture">🏛️ Architecture</a> ·
-  <a href="#-installation">📦 Installation</a> ·
+  <a href="#-start-dashboard">📊 Start Dashboard</a> ·
   <a href="#-usage">📝 Usage</a> ·
   <a href="#-examples">💡 Examples</a> ·
   <a href="#-contributing">🤝 Contributing</a>
@@ -21,7 +21,11 @@ More **institutional oversight** than CrewAI, more **real-time visibility** than
 
 ## 🚀 Quick Start
 
-### Option 1: One-Click Installation (Recommended)
+### Prerequisites
+
+- **OpenClaw** installed and initialized: `openclaw init`
+
+### Installation
 
 ```bash
 # 1. Clone repository
@@ -30,26 +34,24 @@ cd onepersonlab-agents
 
 # 2. Run installer
 chmod +x install.sh && ./install.sh
+```
 
-# 3. Start services
+**That's it! Installation complete.**
+
+---
+
+## 📊 Start Dashboard
+
+To view and monitor tasks in real-time:
+
+```bash
+# 1. Start services
 bash scripts/run_loop.sh &
 python3 dashboard/server.py
 
-# 4. Open dashboard
+# 2. Open dashboard
 open http://127.0.0.1:7891
 ```
-
-### Option 2: Conversation-Based Setup
-
-**No commands. Just talk.**
-
-1. Configure OpenClaw with your preferred messaging channel (Feishu/Telegram/Signal)
-2. Send a message to Lab Director:
-   ```
-   I want to build an AI-driven drug discovery platform.
-   I need expertise in chemistry, biology, computer science, and medicine.
-   ```
-3. Lab Director will triage and coordinate the team automatically
 
 ---
 
@@ -134,45 +136,6 @@ open http://127.0.0.1:7891
 5. **Report channel**: Only Operations Office reports final results to Lab Director
 
 See [`protocols/permissions.md`](protocols/permissions.md) for complete rules.
-
----
-
-## 📦 Installation
-
-### Prerequisites
-
-- **OpenClaw** installed: `brew install openclaw` or download from https://openclaw.ai
-- **Python 3.9+**: `python3 --version`
-- **Git**: `git --version`
-
-### Step-by-Step
-
-```bash
-# 1. Clone repository
-git clone https://github.com/onepersonlab/onepersonlab-agents.git
-cd onepersonlab-agents
-
-# 2. Run installer (automatically registers 12 agents)
-chmod +x install.sh && ./install.sh
-
-# 3. Start data refresh loop (background)
-bash scripts/run_loop.sh &
-
-# 4. Start dashboard server
-python3 dashboard/server.py
-
-# 5. Open browser
-open http://127.0.0.1:7891
-```
-
-### What `install.sh` Does
-
-- ✅ Creates 12 Agent Workspaces (`~/.openclaw/workspace-*`)
-- ✅ Writes SOUL.md personality files for each role
-- ✅ Registers agents with permission matrix to `openclaw.json`
-- ✅ Initializes data directory with demo task
-- ✅ Runs first data sync
-- ✅ Restarts OpenClaw Gateway
 
 ---
 
