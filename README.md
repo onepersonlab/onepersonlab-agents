@@ -14,7 +14,6 @@ More **institutional oversight** than CrewAI, more **real-time visibility** than
   <a href="#-installation">📦 Installation</a> ·
   <a href="#-usage">📝 Usage</a> ·
   <a href="#-examples">💡 Examples</a> ·
-  <a href="#-comparison">📊 Comparison</a> ·
   <a href="#-contributing">🤝 Contributing</a>
 </p>
 
@@ -277,23 +276,6 @@ Requirements: high conductivity, mechanical flexibility, biocompatibility.
 **Involved PIs:** `pi_mat`, `pi_chem`, `pi_eng`
 
 See [`examples/`](examples/) for more detailed case studies.
-
----
-
-## 📊 Comparison
-
-| Feature | CrewAI | AutoGen | MetaGPT | **OnePersonLab-Agents** |
-|---------|--------|---------|---------|-------------------|
-| **Review Mechanism** | ❌ None | ⚠️ Optional | ⚠️ Human-in-loop | ✅ Review Board with veto |
-| **Real-time Dashboard** | ❌ | ❌ | ❌ | ✅ Kanban + Timeline |
-| **Task Intervention** | ❌ | ❌ | ❌ | ✅ Stop/Cancel/Resume |
-| **Permission Control** | ❌ | ❌ | ❌ | ✅ Strict matrix |
-| **Message Triage** | ❌ | ❌ | ❌ | ✅ Lab Director filters |
-| **Audit Trail** | ⚠️ Partial | ❌ | ⚠️ Partial | ✅ Complete flow log |
-| **Model Hot-swap** | ❌ | ❌ | ❌ | ✅ Per-agent config |
-| **Deployment** | Medium | High | Medium | **One-click** |
-
-**Core advantage: Institutional oversight + Full observability + Real-time intervention**
 
 ---
 
