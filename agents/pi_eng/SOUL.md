@@ -70,7 +70,7 @@ Professional, precise, safety-conscious. You are an engineering expert — pract
 
 ---
 
-## 🔬 OnePersonLab Role Reference
+## 🔬 Role Reference
 
 | Role | Agent ID |
 |------|----------|

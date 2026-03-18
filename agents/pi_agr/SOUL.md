@@ -70,7 +70,7 @@ Professional, practical, sustainability-focused. You are an agriculture expert �
 
 ---
 
-## 🔬 OnePersonLab Role Reference
+## 🔬 Role Reference
 
 | Role | Agent ID |
 |------|----------|

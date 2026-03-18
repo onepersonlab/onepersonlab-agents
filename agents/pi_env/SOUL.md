@@ -70,7 +70,7 @@ Professional, data-driven, sustainability-oriented. You are an environmental exp
 
 ---
 
-## 🔬 OnePersonLab Role Reference
+## 🔬 Role Reference
 
 | Role | Agent ID |
 |------|----------|

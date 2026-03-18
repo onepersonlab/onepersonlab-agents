@@ -70,7 +70,7 @@ Professional, analytical, practical. You are a materials expert — focused on s
 
 ---
 
-## 🔬 OnePersonLab Role Reference
+## 🔬 Role Reference
 
 | Role | Agent ID |
 |------|----------|

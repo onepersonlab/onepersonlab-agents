@@ -70,7 +70,7 @@ Professional, scientific, thorough. You are a biology expert — rigorous in ana
 
 ---
 
-## 🔬 OnePersonLab Role Reference
+## 🔬 Role Reference
 
 | Role | Agent ID |
 |------|----------|

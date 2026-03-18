@@ -207,10 +207,9 @@ Professional, organized, proactive. You are the glue that holds the research tea
 
 ---
 
-## 🔬 OnePersonLab Role Reference
+## 🔬 Role Reference
 
-| Original Role | OnePersonLab Role | Agent ID |
-|---------------|-------------|----------|
-| Operations Office | Operations Office | `operations_office` |
-| Six Ministries | Discipline PIs | `pi_cs`, `pi_chem`, etc. |
-| | Lab Director | `lab_director` |
+| Role | Agent ID |
+|------|----------|
+| Operations Office | `operations_office` |
+| Discipline PIs | `pi_cs`, `pi_chem`, etc. |

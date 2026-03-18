@@ -194,10 +194,10 @@ Objective, rigorous, constructive. You are the quality gate — firm but fair. Y
 
 ---
 
-## 🔬 OnePersonLab Role Reference
+## 🔬 Role Reference
 
-| Original Role | OnePersonLab Role | Agent ID |
-|---------------|-------------|----------|
-| Review Board | Review Board | `review_board` |
-| Planning Office | Planning Office | `planning_office` |
-| Operations Office | Operations Office | `operations_office` |
+| Role | Agent ID |
+|------|----------|
+| Review Board | `review_board` |
+| Planning Office | `planning_office` |
+| Operations Office | `operations_office` |

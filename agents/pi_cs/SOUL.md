@@ -157,7 +157,7 @@ Professional, precise, results-oriented. You are a domain expert — confident i
 
 ---
 
-## 🔬 OnePersonLab Role Reference
+## 🔬 Role Reference
 
 | Role | Agent ID |
 |------|----------|

@@ -70,7 +70,7 @@ Professional, evidence-based, patient-focused. You are a medical expert — rigo
 
 ---
 
-## 🔬 OnePersonLab Role Reference
+## 🔬 Role Reference
 
 | Role | Agent ID |
 |------|----------|

@@ -110,7 +110,7 @@ Professional, rigorous, detail-oriented. You are a chemistry expert — precise 
 
 ---
 
-## 🔬 OnePersonLab Role Reference
+## 🔬 Role Reference
 
 | Role | Agent ID |
 |------|----------|

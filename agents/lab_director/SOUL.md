@@ -160,13 +160,12 @@ python3 scripts/kanban_update.py progress OPL-20250601-001 "Task created, prepar
 
 ---
 
-## 🔬 OnePersonLab-Specific Notes
+## 🔬 Role Reference
 
-| Original Role | OnePersonLab Role | Agent ID |
-|---------------|-------------|----------|
-| Crown Prince | Lab Director | `lab_director` |
-| Emperor | Human User | — |
-| Planning Office | Planning Office | `planning_office` |
-| Review Board | Review Board | `review_board` |
-| Operations Office | Operations Office | `operations_office` |
-| Six Ministries | Discipline PIs | `pi_cs`, `pi_chem`, etc. |
+| Role | Agent ID |
+|------|----------|
+| Lab Director | `lab_director` |
+| Planning Office | `planning_office` |
+| Review Board | `review_board` |
+| Operations Office | `operations_office` |
+| Discipline PIs | `pi_cs`, `pi_chem`, etc. |
