@@ -169,25 +169,6 @@ See [`protocols/permissions.md`](protocols/permissions.md) for complete rules.
                                     └────────── Veto ────────────────────────┘
 ```
 
-### Kanban Commands
-
-```bash
-# Create task
-python3 scripts/kanban_update.py create OPL-20260318-001 "Research goal" State Org Official
-
-# Update state
-python3 scripts/kanban_update.py state OPL-xxx State "Description"
-
-# Flow transition
-python3 scripts/kanban_update.py flow OPL-xxx "From" "To" "Remark"
-
-# Mark done
-python3 scripts/kanban_update.py done OPL-xxx "Output" "Summary"
-
-# Report progress
-python3 scripts/kanban_update.py progress OPL-xxx "Current action" "Plan1✅|Plan2🔄|Plan3"
-```
-
 ---
 
 ## 💡 Examples
@@ -249,7 +230,6 @@ onepersonlab-agents/
 │   ├── dashboard.html          # Frontend UI
 │   └── server.py               # API server
 ├── scripts/                    # Automation scripts
-│   ├── kanban_update.py        # Kanban CLI
 │   ├── run_loop.sh             # Data refresh loop
 │   ├── sync_*.py               # Data synchronization
 │   └── ...
