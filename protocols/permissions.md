@@ -1,8 +1,8 @@
-# 🔐 Permission Matrix · SciLab-Agents
+# 🔐 Permission Matrix · OnePersonLab-Agents
 
 > **Not "send whenever you want" — real checks and balances.**
 
-This document defines the communication permissions between all roles in SciLab-Agents. Violations are automatically intercepted and logged.
+This document defines the communication permissions between all roles in OnePersonLab-Agents. Violations are automatically intercepted and logged.
 
 ---
 
@@ -12,7 +12,7 @@ This document defines the communication permissions between all roles in SciLab-
 
 | From ↓ → To | Lab Director | Planning | Review | Operations | CS | Chem | Bio | Mat | Med | Agr | Env | Eng |
 |-------------|--------------|----------|--------|------------|----|------|-----|-----|-----|-----|-----|-----|
-| **PI-Principal** | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Human User** | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | **Lab Director** | — | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | **Planning Office** | ❌ | — | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | **Review Board** | ❌ | ✅ (Veto) | — | ✅ (Approve) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
@@ -23,11 +23,11 @@ This document defines the communication permissions between all roles in SciLab-
 
 ## 📜 Permission Rules
 
-### Rule 1: PI-Principal Direct Access
-**PI-Principal communicates ONLY with Lab Director.**
+### Rule 1: Human User Direct Access
+**Human User communicates ONLY with Lab Director.**
 
-- ✅ PI-Principal → Lab Director: All research directives
-- ❌ PI-Principal → Any other role: Intercepted
+- ✅ Human User → Lab Director: All task directives
+- ❌ Human User → Any other role: Intercepted
 
 **Rationale**: Lab Director is the single point of triage. This prevents:
 - Overloading execution agents with casual queries
@@ -48,7 +48,7 @@ This document defines the communication permissions between all roles in SciLab-
 | Operations → PIs | ✅ | Task assignment |
 | PIs → Operations | ✅ | Progress reports |
 | Operations → Lab Director | ✅ | Final report |
-| Lab Director → PI-Principal | ✅ | Final reply |
+| Lab Director → Human User | ✅ | Final reply |
 
 **Reverse flows are NOT allowed** (except veto):
 - ❌ PIs → Planning (must go through Operations)
@@ -93,7 +93,7 @@ This document defines the communication permissions between all roles in SciLab-
 
 - ✅ Operations → Lab Director: Final consolidated report
 - ❌ PIs → Lab Director: Intercepted
-- ❌ PIs → PI-Principal: Intercepted
+- ❌ PIs → Human User: Intercepted
 
 **Rationale**: Lab Director receives unified report, not fragmented PI updates.
 
@@ -103,7 +103,7 @@ This document defines the communication permissions between all roles in SciLab-
 **Issues escalate through designated channels only.**
 
 ```
-PI → Operations Office → Lab Director → PI-Principal (if critical)
+PI → Operations Office → Lab Director → Human User (if critical)
 ```
 
 | Issue Level | Handler |
@@ -111,7 +111,7 @@ PI → Operations Office → Lab Director → PI-Principal (if critical)
 | Task blocker | Operations Office |
 | Cross-PI conflict | Operations Office |
 | Plan quality concern | Review Board |
-| Critical project risk | Lab Director → PI-Principal |
+| Critical project risk | Lab Director → Human User |
 
 ---
 
@@ -150,8 +150,8 @@ All violations are logged for audit:
 ### Allowed: Lab Director → Planning Office
 ```
 📋 Lab Director · Directive Forward
-Task ID: SLC-xxx
-PI-Principal Original: [original text]
+Task ID: OPL-xxx
+Human User Original: [original text]
 Summarized Requirements:
   - Goal: [one sentence]
   - Requirements: [specific requirements]
@@ -161,7 +161,7 @@ Summarized Requirements:
 ### Allowed: Planning → Review Board
 ```
 📋 Planning Office · Plan Submission
-Task ID: SLC-xxx
+Task ID: OPL-xxx
 Plan Summary: [...]
 Sub-task Details: [...]
 Dependencies: [...]
@@ -171,7 +171,7 @@ Risk Assessment: [...]
 ### Allowed: Review Board → Planning (Veto)
 ```
 📋 Review Board · Veto
-Task ID: SLC-xxx
+Task ID: OPL-xxx
 Decision: 🚫 VETOED
 
 Veto Reasons:
@@ -186,7 +186,7 @@ Modification Suggestions:
 ### Allowed: Review Board → Operations (Approve)
 ```
 📋 Review Board · Approval
-Task ID: SLC-xxx
+Task ID: OPL-xxx
 Decision: ✅ APPROVED
 Review Summary: [brief comment]
 ```
@@ -194,18 +194,18 @@ Review Summary: [brief comment]
 ### Allowed: Operations → PIs
 ```
 📋 Operations Office · Task Assignment
-Task ID: SLC-xxx-T01
+Task ID: OPL-xxx-T01
 Assigned PI: pi_cs
 Deliverable: [Specific output]
 Deadline: [Date/Time]
-Dependencies: [None | Wait for SLC-xxx-T02]
+Dependencies: [None | Wait for OPL-xxx-T02]
 Priority: [High/Medium/Low]
 ```
 
 ### Allowed: PIs → Operations
 ```
 📋 PI-CS · Deliverable Submission
-Task ID: SLC-xxx-T01
+Task ID: OPL-xxx-T01
 Status: ✅ Completed
 Deliverable: [Description]
 Summary: [2-3 sentences]
@@ -215,7 +215,7 @@ Key Findings: [...]
 ### Allowed: Operations → Lab Director
 ```
 📋 Operations Office · Final Report
-Task ID: SLC-xxx
+Task ID: OPL-xxx
 Status: ✅ COMPLETED
 Executive Summary: [...]
 Deliverables: [...]
@@ -226,7 +226,7 @@ Key Findings: [...]
 
 ## 🔬 Role Reference
 
-| SciLab Role | Agent ID | Original Role |
+| OnePersonLab Role | Agent ID | Original Role |
 |-------------|----------|---------------|
 | Lab Director | `lab_director` | 太子 |
 | Planning Office | `planning_office` | 中书省 |
@@ -247,7 +247,7 @@ Key Findings: [...]
 
 ```
                     ┌──────────────────────────────────────────────────┐
-                    │              PI-Principal                        │
+                    │              Human User                        │
                     │         (Feishu / Telegram / Signal)             │
                     └────────────────────┬─────────────────────────────┘
                                          │ ✅ Directive
@@ -299,7 +299,7 @@ Key Findings: [...]
                              │ ✅ Reply
                              ▼
                     ┌─────────────────┐
-                    │  PI-Principal   │
+                    │  Human User   │
                     └─────────────────┘
 ```
 

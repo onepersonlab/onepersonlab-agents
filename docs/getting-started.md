@@ -1,4 +1,4 @@
-# 🚀 Getting Started with SciLab-Agents
+# 🚀 Getting Started with OnePersonLab-Agents
 
 > From zero to running in 5 minutes
 
@@ -6,7 +6,7 @@
 
 ## Prerequisites
 
-Before installing SciLab-Agents, ensure you have:
+Before installing OnePersonLab-Agents, ensure you have:
 
 - **OpenClaw** installed and initialized
 - **Python 3.9+** available
@@ -16,7 +16,7 @@ Before installing SciLab-Agents, ensure you have:
 
 ## Step 1: Install OpenClaw
 
-SciLab-Agents runs on [OpenClaw](https://openclaw.ai). Install it first:
+OnePersonLab-Agents runs on [OpenClaw](https://openclaw.ai). Install it first:
 
 ```bash
 # macOS
@@ -36,7 +36,7 @@ Follow the prompts to configure your API keys and preferences.
 
 ---
 
-## Step 2: Clone and Install SciLab-Agents
+## Step 2: Clone and Install OnePersonLab-Agents
 
 ```bash
 # Clone repository
@@ -69,7 +69,7 @@ openclaw channels list
 openclaw channels add feishu --agent lab_director
 ```
 
-The Lab Director agent will be your primary contact for all research directives.
+The Lab Director agent will be your primary contact for all task directives.
 
 ---
 
@@ -95,8 +95,8 @@ python3 dashboard/server.py
 open http://127.0.0.1:7891
 ```
 
-You should see the SciLab Dashboard with:
-- **Research Dashboard**: Active directives by status
+You should see the OnePersonLab Dashboard with:
+- **Task Dashboard**: Active directives by status
 - **Dept Coordination**: Current workload by department
 - **Team Overview**: Agent performance metrics
 - **Archive**: Completed directives
@@ -118,7 +118,7 @@ Timeline: 2 weeks
 ### What Happens Next
 
 1. **Lab Director** receives message → Triage (casual vs. directive)
-2. **Creates task** `SLC-YYYYMMDD-001` with summarized title
+2. **Creates task** `OPL-YYYYMMDD-001` with summarized title
 3. **Forwards to Planning Office** for detailed planning
 4. **Planning Office** decomposes into sub-tasks:
    - T01 (pi_chem): Compound library design
@@ -141,7 +141,7 @@ Watch the dashboard for real-time updates:
 
 ## Step 6: Explore Dashboard Features
 
-### Research Dashboard (📋)
+### Task Dashboard (📋)
 
 - View all active directives by status
 - Filter by department
@@ -185,10 +185,10 @@ For isolated demo environment:
 
 ```bash
 # Build image
-docker build -t onepersonlab/scilab-agents:latest .
+docker build -t onepersonlab/onepersonlab-agents:latest .
 
 # Run container
-docker run -p 7891:7891 onepersonlab/scilab-agents:latest
+docker run -p 7891:7891 onepersonlab/onepersonlab-agents:latest
 
 # Or use Docker Compose
 docker compose up
@@ -265,4 +265,4 @@ python3 scripts/sync_agent_config.py
 
 ---
 
-> 🧪 Welcome to SciLab-Agents — where ancient wisdom meets modern research!
+> 🧪 Welcome to OnePersonLab-Agents — where ancient wisdom meets modern research!

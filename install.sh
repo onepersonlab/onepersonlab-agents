@@ -1,6 +1,6 @@
 #!/bin/bash
 # ══════════════════════════════════════════════════════════════
-# SciLab-Agents · OnePersonLab Research Platform
+# OnePersonLab-Agents · OnePersonLab Multi-Agent Platform
 # One-Click Installation Script
 # ══════════════════════════════════════════════════════════════
 set -e
@@ -14,8 +14,8 @@ RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; BLUE='\033[0;34m'; NC
 banner() {
   echo ""
   echo -e "${BLUE}╔══════════════════════════════════════════════╗${NC}"
-  echo -e "${BLUE}║  🧪  SciLab-Agents · OnePersonLab           ║${NC}"
-  echo -e "${BLUE}║       Multi-Agent Research Platform          ║${NC}"
+  echo -e "${BLUE}║  🧪  OnePersonLab-Agents · OnePersonLab           ║${NC}"
+  echo -e "${BLUE}║       Multi-Agent Multi-Agent Platform          ║${NC}"
   echo -e "${BLUE}║       Installation Wizard                    ║${NC}"
   echo -e "${BLUE}╚══════════════════════════════════════════════╝${NC}"
   echo ""
@@ -53,7 +53,7 @@ check_deps() {
 create_workspaces() {
   info "Creating Agent Workspaces..."
   
-  # SciLab-Agents: 12 roles (4 coordination + 8 discipline PIs)
+  # OnePersonLab-Agents: 12 roles (4 coordination + 8 discipline PIs)
   AGENTS=(
     lab_director
     planning_office
@@ -93,7 +93,7 @@ AGENTS_EOF
 
 # ── Step 2: Register Agents ──────────────────────────────────
 register_agents() {
-  info "Registering SciLab-Agents..."
+  info "Registering OnePersonLab-Agents..."
 
   # Backup config
   cp "$OC_CFG" "$OC_CFG.bak.scilab-$(date +%Y%m%d-%H%M%S)"
@@ -105,7 +105,7 @@ import json, pathlib, sys
 cfg_path = pathlib.Path.home() / '.openclaw' / 'openclaw.json'
 cfg = json.loads(cfg_path.read_text())
 
-# SciLab-Agents: 12 roles with permission matrix
+# OnePersonLab-Agents: 12 roles with permission matrix
 # Based on protocols/permissions.md
 AGENTS = [
     # Coordination Roles
@@ -166,25 +166,25 @@ init_data() {
   done
   echo '[]' > "$REPO_DIR/data/pending_model_changes.json"
 
-  # Initial tasks file with SciLab demo
+  # Initial tasks file with OnePersonLab demo
   if [ ! -f "$REPO_DIR/data/tasks_source.json" ]; then
     python3 << 'PYEOF'
 import json, pathlib, os
 
 tasks = [
     {
-        "id": "SLC-DEMO-001",
-        "title": "🎉 SciLab-Agents Initialized",
+        "id": "OPL-DEMO-001",
+        "title": "🎉 OnePersonLab-Agents Initialized",
         "official": "Operations Director",
         "org": "Operations Office",
         "state": "Done",
-        "now": "SciLab research platform is ready",
+        "now": "OnePersonLab platform is ready",
         "eta": "-",
         "block": "None",
         "output": "",
         "ac": "All systems operational",
         "flow_log": [
-            {"at": "2026-03-18T00:00:00Z", "from": "PI-Principal", "to": "Lab Director", "remark": "Issue directive: Initialize SciLab platform"},
+            {"at": "2026-03-18T00:00:00Z", "from": "Human User", "to": "Lab Director", "remark": "Issue directive: Initialize OnePersonLab platform"},
             {"at": "2026-03-18T00:01:00Z", "from": "Lab Director", "to": "Planning Office", "remark": "Forward directive for planning"},
             {"at": "2026-03-18T00:02:00Z", "from": "Planning Office", "to": "Review Board", "remark": "Submit plan for review"},
             {"at": "2026-03-18T00:03:00Z", "from": "Review Board", "to": "Operations Office", "remark": "✅ Plan approved"},
@@ -237,7 +237,7 @@ restart_gateway
 
 echo ""
 echo -e "${GREEN}╔══════════════════════════════════════════════════╗${NC}"
-echo -e "${GREEN}║  🎉  SciLab-Agents Installation Complete!        ║${NC}"
+echo -e "${GREEN}║  🎉  OnePersonLab-Agents Installation Complete!        ║${NC}"
 echo -e "${GREEN}╚══════════════════════════════════════════════════╝${NC}"
 echo ""
 echo "Next Steps:"
@@ -247,5 +247,5 @@ echo "  3. Open dashboard:      http://127.0.0.1:7891"
 echo ""
 info "Documentation: docs/getting-started.md"
 echo ""
-echo "🧪 SciLab-Agents: Governing research with ancient wisdom"
+echo "🧪 OnePersonLab-Agents: Governing research with ancient wisdom"
 echo "   https://github.com/onepersonlab/onepersonlab-agents"

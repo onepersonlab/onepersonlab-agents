@@ -1,4 +1,4 @@
-# 🧪 SciLab-Agents
+# 🧪 OnePersonLab-Agents
 
 ## AI-Driven Multi-Discipline Research Collaboration Platform
 
@@ -43,7 +43,7 @@ open http://127.0.0.1:7891
 ### Option 2: Docker Demo
 
 ```bash
-docker run -p 7891:7891 onepersonlab/scilab-agents:latest
+docker run -p 7891:7891 onepersonlab/onepersonlab-agents:latest
 open http://localhost:7891
 ```
 
@@ -67,10 +67,10 @@ open http://localhost:7891
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│              PI-Principal (You / "Emperor")             │
+│              Human User (You / "Emperor")             │
 │                    Feishu / Telegram                    │
 └─────────────────────────┬───────────────────────────────┘
-                          │ Research Directive
+                          │ Task Directive
 ┌─────────────────────────▼───────────────────────────────┐
 │              🎓 Lab Director                            │
 │         Triage: Casual→Reply / Directive→Task           │
@@ -100,7 +100,7 @@ open http://localhost:7891
 
 | Role | Responsibility | Key Function |
 |------|----------------|--------------|
-| 🎓 **Lab Director** | Message triage, task creation | Receives all directives from PI-Principal, triages casual vs. formal, forwards to Planning Office |
+| 🎓 **Lab Director** | Message triage, task creation | Receives all directives from Human User, triages casual vs. formal, forwards to Planning Office |
 | 📋 **Planning Office** | Research strategy, task decomposition | Designs comprehensive plans, breaks down into sub-tasks with deliverables |
 | 🔍 **Review Board** | Quality gate, approval/veto | Reviews plans for completeness and feasibility, can veto with feedback |
 | 📮 **Operations Office** | Task assignment, coordination | Assigns to PIs, monitors progress, consolidates results, reports back |
@@ -126,7 +126,7 @@ open http://localhost:7891
 
 | From ↓ → To | Lab Director | Planning | Review | Operations | PIs |
 |-------------|--------------|----------|--------|------------|-----|
-| **PI-Principal** | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Human User** | ✅ | ❌ | ❌ | ❌ | ❌ |
 | **Lab Director** | — | ✅ | ❌ | ❌ | ❌ |
 | **Planning Office** | ❌ | — | ✅ | ❌ | ❌ |
 | **Review Board** | ❌ | ✅ (Veto) | — | ✅ (Approve) | ❌ |
@@ -135,7 +135,7 @@ open http://localhost:7891
 
 ### Key Rules
 
-1. **PI-Principal → Lab Director only**: All directives flow through Lab Director
+1. **Human User → Lab Director only**: All directives flow through Lab Director
 2. **Single-direction flow**: Lab Director → Planning → Review → Operations → PIs
 3. **Veto power**: Review Board can veto Planning Office (must provide feedback)
 4. **No cross-PI communication**: PIs coordinate only through Operations Office
@@ -189,19 +189,19 @@ open http://127.0.0.1:7891
 ### Via Messaging (Feishu/Telegram/Signal)
 
 1. **Configure channel** in OpenClaw, set Lab Director as entry point
-2. **Send research directive**:
+2. **Send task directive**:
    ```
    I want to discover new drug candidates for Alzheimer's disease.
    Focus on: target identification, compound screening, and ADME-Tox prediction.
    ```
-3. **Lab Director triages** and creates task `SLC-YYYYMMDD-NNN`
+3. **Lab Director triages** and creates task `OPL-YYYYMMDD-NNN`
 4. **Watch progress** on dashboard: http://127.0.0.1:7891
 5. **Receive final report** via same messaging channel
 
 ### Via Dashboard
 
 1. **Open dashboard**: http://127.0.0.1:7891
-2. **View active directives** in Research Dashboard tab
+2. **View active directives** in Task Dashboard tab
 3. **Monitor progress** by department in Dept Coordination tab
 4. **Review completed** tasks in Archive tab
 5. **Configure models** per agent in Models tab
@@ -218,19 +218,19 @@ open http://127.0.0.1:7891
 
 ```bash
 # Create task
-python3 scripts/kanban_update.py create SLC-20260318-001 "Research goal" State Org Official
+python3 scripts/kanban_update.py create OPL-20260318-001 "Research goal" State Org Official
 
 # Update state
-python3 scripts/kanban_update.py state SLC-xxx State "Description"
+python3 scripts/kanban_update.py state OPL-xxx State "Description"
 
 # Flow transition
-python3 scripts/kanban_update.py flow SLC-xxx "From" "To" "Remark"
+python3 scripts/kanban_update.py flow OPL-xxx "From" "To" "Remark"
 
 # Mark done
-python3 scripts/kanban_update.py done SLC-xxx "Output" "Summary"
+python3 scripts/kanban_update.py done OPL-xxx "Output" "Summary"
 
 # Report progress
-python3 scripts/kanban_update.py progress SLC-xxx "Current action" "Plan1✅|Plan2🔄|Plan3"
+python3 scripts/kanban_update.py progress OPL-xxx "Current action" "Plan1✅|Plan2🔄|Plan3"
 ```
 
 ---
@@ -250,7 +250,7 @@ Requirements:
 ```
 
 **Flow:**
-1. Lab Director → Creates `SLC-20260318-001`
+1. Lab Director → Creates `OPL-20260318-001`
 2. Planning Office → 4 sub-tasks (Med, Chem, CS, Bio)
 3. Review Board → Approves ✅
 4. Operations Office → Assigns to 4 PIs
@@ -282,7 +282,7 @@ See [`examples/`](examples/) for more detailed case studies.
 
 ## 📊 Comparison
 
-| Feature | CrewAI | AutoGen | MetaGPT | **SciLab-Agents** |
+| Feature | CrewAI | AutoGen | MetaGPT | **OnePersonLab-Agents** |
 |---------|--------|---------|---------|-------------------|
 | **Review Mechanism** | ❌ None | ⚠️ Optional | ⚠️ Human-in-loop | ✅ Review Board with veto |
 | **Real-time Dashboard** | ❌ | ❌ | ❌ | ✅ Kanban + Timeline |

@@ -1,5 +1,5 @@
 #!/bin/bash
-# SciLab-Agents · Data Refresh Loop
+# OnePersonLab-Agents · Data Refresh Loop
 # Usage: ./run_loop.sh [interval_seconds]  (default: 15)
 
 set -euo pipefail
@@ -37,7 +37,7 @@ rotate_log() {
   fi
 }
 
-echo "🧪 SciLab-Agents Data Refresh Loop (PID=$$)"
+echo "🧪 OnePersonLab-Agents Data Refresh Loop (PID=$$)"
 echo "   Script Dir: $SCRIPT_DIR"
 echo "   Interval: ${INTERVAL}s"
 echo "   Log: $LOG"

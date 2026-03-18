@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>SciLab Dashboard · OnePersonLab Research Platform</title>
+  <title>OnePersonLab Dashboard · OnePersonLab Multi-Agent Platform</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&display=swap');
     :root{
@@ -36,7 +36,7 @@
     .tbadge{font-size:10px;padding:1px 5px;border-radius:999px;background:#1a2040;color:var(--acc);margin-left:4px}
     .panel{display:none}.panel.active{display:block}
 
-    /* ══ Research Directive看板 ══ */
+    /* ══ Task Directive看板 ══ */
     .edict-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
     .edict-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;cursor:pointer;transition:border-color .15s,transform .1s,box-shadow .15s}
     .edict-card:hover{border-color:var(--acc);transform:translateY(-2px);box-shadow:0 4px 20px rgba(106,158,255,.1)}
@@ -621,12 +621,12 @@
   <!-- HEADER -->
   <div class="hdr">
     <div>
-      <div class="logo">⚔️ SciLab Dashboard · Research Coordination Platform</div>
-      <div class="sub">PI-Principal View · Real-time Research Directive Tracking</div>
+      <div class="logo">⚔️ OnePersonLab Dashboard · Research Coordination Platform</div>
+      <div class="sub">Human User View · Real-time Task Directive Tracking</div>
     </div>
     <div class="hdr-r">
       <span class="chip" id="chip-sync">⟳ Syncing</span>
-      <span class="chip" id="chip-tasks">— Research Directive</span>
+      <span class="chip" id="chip-tasks">— Task Directive</span>
       <button class="btn-refresh" onclick="loadAll()">⟳ Refresh</button>
       <span id="cd"></span>
     </div>
@@ -634,7 +634,7 @@
 
   <!-- TABS -->
   <div class="tabs">
-    <div class="tab active" data-tab="edicts">📜 Research Directive看板 <span class="tbadge" id="tb-e">0</span></div>
+    <div class="tab active" data-tab="edicts">📜 Task Directive看板 <span class="tbadge" id="tb-e">0</span></div>
     <div class="tab" data-tab="monitor">🔭 Department Coordination <span class="tbadge" id="tb-m">0</span></div>
     <div class="tab" data-tab="officials">👥 Team Overview</div>
     <div class="tab" data-tab="models">⚙️ Model Configuration</div>
@@ -645,7 +645,7 @@
     <div class="tab" data-tab="morning">📰 Research News</div>
   </div>
 
-  <!-- ══ Research Directive看板 ══ -->
+  <!-- ══ Task Directive看板 ══ -->
   <div class="panel active" id="panel-edicts">
     <div class="archive-bar" id="archive-bar">
       <span class="ab-label">📋 Filter：</span>
@@ -661,7 +661,7 @@
   <!-- ══ Department Coordination ══ -->
   <div class="panel" id="panel-monitor">
     <div id="agent-status-panel"></div>
-    <div style="font-size:12px;color:var(--muted);margin-bottom:14px">各省部当前承接Research Directive与Execute状态 · 每5秒自动刷新</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:14px">各省部当前承接Task Directive与Execute状态 · 每5秒自动刷新</div>
     <div class="duty-grid" id="duty-grid"></div>
   </div>
 
@@ -713,7 +713,7 @@
   <div class="panel" id="panel-memorials">
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
       <div style="flex:1">
-        <div class="sec-title" style="margin-bottom:2px">📜 Archive · Research Directive存档</div>
+        <div class="sec-title" style="margin-bottom:2px">📜 Archive · Task Directive存档</div>
         <div style="font-size:11px;color:var(--muted)">任务完成后自动生成奏折，记录从Issue Directive到完成的完整过程</div>
       </div>
       <select id="mem-filter" onchange="renderMemorials()" style="font-size:11px;padding:4px 10px;background:var(--panel2);border:1px solid var(--line);border-radius:6px;color:var(--text);outline:none">
@@ -819,7 +819,7 @@ let liveStatus=null, agentConfig=null, activeTab='edicts', countdown=5;
 
 /* ══ PIPELINE DEFINITION ══ */
 const PIPE = [
-  {key:'Inbox',    dept:'PI-Principal',   icon:'👑', action:'Issue Directive'},
+  {key:'Inbox',    dept:'Human User',   icon:'👑', action:'Issue Directive'},
   {key:'Taizi',    dept:'Lab Director',   icon:'🤴', action:'Triage'},
   {key:'Zhongshu', dept:'Planning Office', icon:'📜', action:'Plan'},
   {key:'Menxia',   dept:'Review Board', icon:'🔍', action:'Review'},
@@ -831,7 +831,7 @@ const PIPE = [
 const PIPE_STATE_IDX = {Inbox:0,Pending:0,Taizi:1,Zhongshu:2,Menxia:3,Assigned:4,Doing:5,Review:6,Done:7,Blocked:5,Cancelled:5,Next:4};
 
 /* ══ DEPT COLORS ══ */
-const DEPT_COLOR = {'Lab Director':'#e8a040','Planning Office':'#a07aff','Review Board':'#6a9eff','Operations Office':'#6aef9a','PI-Docs':'#f5c842','PI-Agr':'#ff9a6a','PI-CS':'#ff5270','PI-Compliance':'#cc4444','PI-Eng':'#44aaff','PI-HR':'#9b59b6','PI-Principal':'#ffd700','Report':'#2ecc8a'};
+const DEPT_COLOR = {'Lab Director':'#e8a040','Planning Office':'#a07aff','Review Board':'#6a9eff','Operations Office':'#6aef9a','PI-Docs':'#f5c842','PI-Agr':'#ff9a6a','PI-CS':'#ff5270','PI-Compliance':'#cc4444','PI-Eng':'#44aaff','PI-HR':'#9b59b6','Human User':'#ffd700','Report':'#2ecc8a'};
 function deptColor(d){return DEPT_COLOR[d]||'#6a9eff'}
 
 /* ══ UTILS ══ */
@@ -849,7 +849,7 @@ function stateLabel(t){
 }
 
 /* ══ TASK CLASSIFICATION ══ */
-// PI-Principal的Research Directive：JJC-* 开头，有真实标题
+// Human User的Task Directive：JJC-* 开头，有真实标题
 function isEdict(t){ return /^JJC-/i.test(t.id||'') }
 // 系统会话：OC-* / MC-* 开头
 function isSession(t){ return /^(OC-|MC-)/i.test(t.id||'') }
@@ -901,7 +901,7 @@ function renderEdicts(tasks){
   });
   // Tab badge = active count only
   document.getElementById('tb-e').textContent = activeEdicts.length;
-  document.getElementById('chip-tasks').textContent = activeEdicts.length + ' 道Research Directive';
+  document.getElementById('chip-tasks').textContent = activeEdicts.length + ' 道Task Directive';
   // Archive stats
   document.getElementById('archive-count').textContent = `活跃 ${activeEdicts.length} · 归档 ${archivedEdicts.length} · 共 ${allEdicts.length}`;
   // Show "一键归档" button if there are un-archived Done/Cancelled tasks
@@ -909,7 +909,7 @@ function renderEdicts(tasks){
   document.getElementById('btn-archive-done').style.display = unArchivedDone.length ? '' : 'none';
   const el = document.getElementById('edict-grid');
   if(!edicts.length){
-    el.innerHTML='<div class="empty" style="grid-column:1/-1">暂无Research Directive<br><small style="font-size:11px;margin-top:6px;display:block;color:var(--muted)">通过飞书向Lab Director发送任务，Lab DirectorTriage后转Planning Office处理</small></div>';
+    el.innerHTML='<div class="empty" style="grid-column:1/-1">暂无Task Directive<br><small style="font-size:11px;margin-top:6px;display:block;color:var(--muted)">通过飞书向Lab Director发送任务，Lab DirectorTriage后转Planning Office处理</small></div>';
     return;
   }
   el.innerHTML = edicts.map(t => {
@@ -1066,7 +1066,7 @@ function renderMonitor(tasks){
     {id:'zaochao', label:'News Aggregator',emoji:'🌟',role:'朝报官',  rank:'正三品'},
   ];
 
-  // 每个部门当前承接的Research Directive：从 JJC 任务里找 org 匹配且非 Done 的
+  // 每个部门当前承接的Task Directive：从 JJC 任务里找 org 匹配且非 Done 的
   const activeTasks = tasks.filter(t => isEdict(t) && t.state !== 'Done' && t.state !== 'Next');
   // 官员统计数据（如已加载）
   const offMap = {};
@@ -1076,9 +1076,9 @@ function renderMonitor(tasks){
 
   let activeCount = 0;
   const cards = DEPTS.map(d => {
-    // 该部门正在处理的Research Directive
+    // 该部门正在处理的Task Directive
     const myTasks = activeTasks.filter(t => t.org === d.label);
-    // 也从 flow_log 中找Last involved in的Research Directive
+    // 也从 flow_log 中找Last involved in的Task Directive
     const recentEdict = tasks.filter(t=>isEdict(t))
       .find(t=>(t.flow_log||[]).some(f=>f.from===d.label||f.to===d.label));
 
@@ -1117,7 +1117,7 @@ function renderMonitor(tasks){
           </div>`).join('') :
           `<div class="dc-idle">
             <span style="font-size:20px">🪭</span>
-            <span>Standby ${recentEdict?`· Last involved in <b style="color:var(--muted)">${esc(recentEdict.id)}</b>`:'· 尚无Research Directive记录'}</span>
+            <span>Standby ${recentEdict?`· Last involved in <b style="color:var(--muted)">${esc(recentEdict.id)}</b>`:'· 尚无Task Directive记录'}</span>
           </div>`}
       </div>
       <div class="dc-footer">
@@ -1237,8 +1237,8 @@ function openTask(id){
       <div class="fl-timeline">
         ${flowLog.map(fl => {
           const col = deptColor(fl.from||'');
-          const isOk = (fl.remark||'').includes('✅')||fl.to==='PI-Principal';
-          const dotCls = isOk ? 'fl-ok' : (fl.from==='PI-Principal'||fl.to==='PI-Principal') ? 'fl-purple' : 'fl-blue';
+          const isOk = (fl.remark||'').includes('✅')||fl.to==='Human User';
+          const dotCls = isOk ? 'fl-ok' : (fl.from==='Human User'||fl.to==='Human User') ? 'fl-purple' : 'fl-blue';
           return `<div class="fl-item">
             <div class="fl-time">${fl.at?fl.at.substring(11,16):''}</div>
             <div class="fl-dot" style="background:${col}"></div>
@@ -1355,7 +1355,7 @@ function renderLiveActivity(data){
   const phaseBar = document.getElementById('la-phase-bar');
   if(phaseBar && data.phaseDurations && data.phaseDurations.length){
     const maxDur = Math.max(...data.phaseDurations.map(p=>p.durationSec||1), 1);
-    const phaseColors = {'PI-Principal':'#eab308','Lab Director':'#f97316','Planning Office':'#3b82f6','Review Board':'#8b5cf6','Operations Office':'#10b981','Discipline PIs':'#06b6d4','PI-Docs':'#ec4899','PI-Agr/Env':'#f59e0b','PI-CS':'#ef4444','PI-Compliance':'#6366f1','PI-Eng/Mat':'#14b8a6','PI-HR':'#d946ef'};
+    const phaseColors = {'Human User':'#eab308','Lab Director':'#f97316','Planning Office':'#3b82f6','Review Board':'#8b5cf6','Operations Office':'#10b981','Discipline PIs':'#06b6d4','PI-Docs':'#ec4899','PI-Agr/Env':'#f59e0b','PI-CS':'#ef4444','PI-Compliance':'#6366f1','PI-Eng/Mat':'#14b8a6','PI-HR':'#d946ef'};
     let totalDurText = data.totalDuration ? `<span style="margin-left:auto;font-size:10px;color:var(--muted)">总耗时 ${data.totalDuration}</span>` : '';
     phaseBar.innerHTML = `<div style="padding:4px 0 8px;border-bottom:1px solid var(--border)">
       <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><span style="font-size:11px;font-weight:600;color:var(--fg)">⏱ 阶段耗时</span>${totalDurText}</div>
@@ -2241,7 +2241,7 @@ function renderOfficials(data){
   // KPI 行
   document.getElementById('off-kpi').innerHTML=`
     <div class="kpi"><div class="kpi-v blue">${offs.length}</div><div class="kpi-l">在职官员</div></div>
-    <div class="kpi"><div class="kpi-v gold">${totals.tasks_done||0}</div><div class="kpi-l">累计完成Research Directive</div></div>
+    <div class="kpi"><div class="kpi-v gold">${totals.tasks_done||0}</div><div class="kpi-l">累计完成Task Directive</div></div>
     <div class="kpi"><div class="kpi-v ${(totals.cost_cny||0)>20?'warn':'green'}">¥${totals.cost_cny||0}</div><div class="kpi-l">累计费用（含缓存）</div></div>
     <div class="kpi"><div class="kpi-v" style="font-size:16px;padding-top:4px">${esc(data.top_official||'—')}</div><div class="kpi-l">功绩最高</div></div>`;
 
@@ -2305,7 +2305,7 @@ function selectOfficial(id, el){
     <div class="od-section">
       <div class="od-sec-title">功绩统计</div>
       <div class="od-stats">
-        <div class="ods"><div class="ods-v" style="color:var(--ok)">${o.tasks_done}</div><div class="ods-l">完成Research Directive</div></div>
+        <div class="ods"><div class="ods-v" style="color:var(--ok)">${o.tasks_done}</div><div class="ods-l">完成Task Directive</div></div>
         <div class="ods"><div class="ods-v" style="color:var(--warn)">${o.tasks_active}</div><div class="ods-l">Execute中</div></div>
         <div class="ods"><div class="ods-v" style="color:var(--acc)">${o.flow_participations}</div><div class="ods-l">流转参与</div></div>
       </div>
@@ -2331,11 +2331,11 @@ function selectOfficial(id, el){
       </div>
     </div>
 
-    <!-- 参与Research Directive -->
+    <!-- 参与Task Directive -->
     <div class="od-section">
-      <div class="od-sec-title">参与Research Directive（${edicts.length} 道）</div>
+      <div class="od-sec-title">参与Task Directive（${edicts.length} 道）</div>
       ${!edicts.length
-        ? '<div style="font-size:12px;color:var(--muted);padding:8px 0">暂无Research Directive记录</div>'
+        ? '<div style="font-size:12px;color:var(--muted);padding:8px 0">暂无Task Directive记录</div>'
         : `<div class="od-edict-list">${edicts.map(e=>`
           <div class="oe-item" onclick='openTask(${JSON.stringify(e.id)})'>
             <span class="oe-id">${esc(e.id)}</span>
@@ -2413,10 +2413,10 @@ async function unarchiveTask(taskId){
   }catch(e){ toast('服务器连接失败','err'); }
 }
 async function archiveAllDone(){
-  if(!confirm('将所有Completed/Cancelled的Research Directive移入归档？')) return;
+  if(!confirm('将所有Completed/Cancelled的Task Directive移入归档？')) return;
   try{
     const r = await postJ(API+'/archive-task', {archiveAllDone: true});
-    if(r.ok){ toast(`📦 ${r.count||0} 道Research DirectiveArchived`,'ok'); loadAll(); }
+    if(r.ok){ toast(`📦 ${r.count||0} 道Task DirectiveArchived`,'ok'); loadAll(); }
     else toast(r.error||'批量归档失败','err');
   }catch(e){ toast('服务器连接失败','err'); }
 }
@@ -2498,7 +2498,7 @@ function renderMemorials(){
 
   el.innerHTML = mems.map(t=>{
     const fl = t.flow_log||[];
-    const depts = [...new Set(fl.map(f=>f.from).concat(fl.map(f=>f.to)).filter(x=>x&&x!=='PI-Principal'))];
+    const depts = [...new Set(fl.map(f=>f.from).concat(fl.map(f=>f.to)).filter(x=>x&&x!=='Human User'))];
     const firstAt = fl.length ? (fl[0].at||'').substring(0,16).replace('T',' ') : '';
     const lastAt = fl.length ? (fl[fl.length-1].at||'').substring(0,16).replace('T',' ') : '';
     const stIcon = t.state==='Done'?'✅':'🚫';
@@ -2522,12 +2522,12 @@ function openMemorial(jsonStr){
   const fl = t.flow_log||[];
   const st = t.state||'Unknown';
   const stIcon = st==='Done'?'✅':st==='Cancelled'?'🚫':'🔄';
-  const depts = [...new Set(fl.map(f=>f.from).concat(fl.map(f=>f.to)).filter(x=>x&&x!=='PI-Principal'))];
+  const depts = [...new Set(fl.map(f=>f.from).concat(fl.map(f=>f.to)).filter(x=>x&&x!=='Human User'))];
 
   // Reconstruct phases from flow_log
   let originLog=[], planLog=[], reviewLog=[], execLog=[], resultLog=[];
   for(const f of fl){
-    if(f.from==='PI-Principal') originLog.push(f);
+    if(f.from==='Human User') originLog.push(f);
     else if(f.to==='Planning Office'||f.from==='Planning Office') planLog.push(f);
     else if(f.to==='Review Board'||f.from==='Review Board') reviewLog.push(f);
     else if(f.remark&&(f.remark.includes('完成')||f.remark.includes('Report'))) resultLog.push(f);
@@ -2754,7 +2754,7 @@ function openTemplateForm(tplId){
       </div>`).join('')}
       <div id="tpl-preview" style="background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:14px;font-size:12px;color:var(--muted);display:none"></div>
       <div style="display:flex;gap:10px;justify-content:flex-end">
-        <button type="button" class="btn btn-g" onclick="previewTemplate('${t.id}')" style="padding:8px 16px;font-size:12px">👁 预览Research Directive</button>
+        <button type="button" class="btn btn-g" onclick="previewTemplate('${t.id}')" style="padding:8px 16px;font-size:12px">👁 预览Task Directive</button>
         <button type="submit" class="tpl-go" style="padding:8px 20px;font-size:13px">📜 Issue Directive</button>
       </div>
     </form>
@@ -2778,7 +2778,7 @@ function previewTemplate(tplId){
   const cmd = buildCommand(tplId);
   const el = document.getElementById('tpl-preview');
   el.style.display='block';
-  el.innerHTML = `<div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:6px">📜 将发送给Planning Office的Research Directive：</div><div style="white-space:pre-wrap;line-height:1.6">${esc(cmd)}</div>`;
+  el.innerHTML = `<div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:6px">📜 将发送给Planning Office的Task Directive：</div><div style="white-space:pre-wrap;line-height:1.6">${esc(cmd)}</div>`;
 }
 
 async function executeTemplate(e, tplId){
@@ -2814,7 +2814,7 @@ async function executeTemplate(e, tplId){
       params: params,
     });
     if(r.ok){
-      toast(`📜 ${r.taskId} Research Directive已下达`, 'ok', 5000);
+      toast(`📜 ${r.taskId} Task Directive已下达`, 'ok', 5000);
       closeModal();
       loadAll();
     } else {

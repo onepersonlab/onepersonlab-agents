@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Dashboard SciLab Adaptation Script
-Replaces Three Departments and Six Ministries terminology with SciLab research terminology
+Dashboard OnePersonLab Adaptation Script
+Replaces Three Departments and Six Ministries terminology with OnePersonLab research terminology
 """
 
 import re
@@ -14,10 +14,10 @@ with open(FILE, 'r', encoding='utf-8') as f:
 # Title replacements
 replacements = [
     # Header
-    ('军机处 · 三省六部总控台', 'SciLab Dashboard · Research Coordination Platform'),
-    ('皇上视角 · 实时旨意追踪', 'PI-Principal View · Real-time Research Directive Tracking'),
-    ('旨意', 'Research Directive'),
-    ('旨意看板', 'Research Dashboard'),
+    ('军机处 · 三省六部总控台', 'OnePersonLab Dashboard · Research Coordination Platform'),
+    ('皇上视角 · 实时旨意追踪', 'Human User View · Real-time Task Directive Tracking'),
+    ('旨意', 'Task Directive'),
+    ('旨意看板', 'Task Dashboard'),
     ('省部调度', 'Department Coordination'),
     ('官员总览', 'Team Overview'),
     ('模型配置', 'Model Configuration'),
@@ -38,7 +38,7 @@ replacements = [
     ('刑部', 'PI-Compliance'),
     ('工部', 'PI-Eng/Mat'),
     ('吏部', 'PI-HR'),
-    ('皇上', 'PI-Principal'),
+    ('皇上', 'Human User'),
     ('六部', 'Discipline PIs'),
     ('早朝', 'Morning Briefing'),
     ('钦天监', 'News Aggregator'),
@@ -85,7 +85,7 @@ replacements = [
     ('.st-Assigned', '.st-OperationsOffice'),
     
     # Tab badges
-    ('📜 旨意看板', '📋 Research Dashboard'),
+    ('📜 旨意看板', '📋 Task Dashboard'),
     ('🔭 省部调度', '🔭 Dept Coordination'),
     ('👥 官员总览', '👥 Team Overview'),
     ('⚙️ 模型配置', '⚙️ Models'),
@@ -120,7 +120,7 @@ replacements = [
     ("label:'吏部'", "label:'HR'"),
     
     # Role descriptions
-    ("role:'太子'", "role:'Research Coordinator'"),
+    ("role:'太子'", "role:'Task Coordinator'"),
     ("role:'中书令'", "role:'Planning Director'"),
     ("role:'侍中'", "role:'Review Chair'"),
     ("role:'尚书令'", "role:'Operations Director'"),
@@ -137,10 +137,10 @@ replacements = [
     ("rank:'正二品'", "rank:'Lead'"),
     
     # Misc
-    ('各省部当前承接旨意与执行状态', 'Current research directives and execution status by department'),
-    ('通过飞书向太子发送任务，太子分拣后转中书省处理', 'Send research directives via Feishu to Lab Director for triage and planning'),
+    ('各省部当前承接旨意与执行状态', 'Current task directives and execution status by department'),
+    ('通过飞书向太子发送任务，太子分拣后转中书省处理', 'Send task directives via Feishu to Lab Director for triage and planning'),
     ('点击左侧官员查看详情', 'Click on a team member to view details'),
-    ('参与旨意', 'Research Directives'),
+    ('参与旨意', 'Task Directives'),
     ('完成旨意', 'Completed Directives'),
     ('累计完成旨意', 'Total Completed'),
     ('道旨意', ' directives'),
@@ -173,7 +173,7 @@ for old, new in replacements:
 # Fix DEPT_COLOR mapping
 content = re.sub(
     r"const DEPT_COLOR = \{[^}]+\}",
-    "const DEPT_COLOR = {'Lab Director':'#e8a040','Planning Office':'#a07aff','Review Board':'#6a9eff','Operations Office':'#6aef9a','PI-Docs':'#f5c842','PI-Agr':'#ff9a6a','PI-CS':'#ff5270','PI-Compliance':'#cc4444','PI-Eng':'#44aaff','PI-HR':'#9b59b6','PI-Principal':'#ffd700','Report':'#2ecc8a'}",
+    "const DEPT_COLOR = {'Lab Director':'#e8a040','Planning Office':'#a07aff','Review Board':'#6a9eff','Operations Office':'#6aef9a','PI-Docs':'#f5c842','PI-Agr':'#ff9a6a','PI-CS':'#ff5270','PI-Compliance':'#cc4444','PI-Eng':'#44aaff','PI-HR':'#9b59b6','Human User':'#ffd700','Report':'#2ecc8a'}",
     content
 )
 
@@ -187,7 +187,7 @@ content = re.sub(
 # Fix pipeline stages
 content = re.sub(
     r"\{key:'Inbox'.+?\{key:'Next'.+?\}",
-    """{key:'Inbox',    dept:'PI-Principal', icon:'👑', action:'Issue'},
+    """{key:'Inbox',    dept:'Human User', icon:'👑', action:'Issue'},
   {key:'LabDirector',    dept:'Lab Director', icon:'🤴', action:'Triage'},
   {key:'PlanningOffice', dept:'Planning Office', icon:'📋', action:'Plan'},
   {key:'ReviewBoard',   dept:'Review Board', icon:'🔍', action:'Review'},
@@ -202,4 +202,4 @@ content = re.sub(
 with open(FILE, 'w', encoding='utf-8') as f:
     f.write(content)
 
-print("Dashboard adapted to SciLab terminology successfully!")
+print("Dashboard adapted to OnePersonLab terminology successfully!")
