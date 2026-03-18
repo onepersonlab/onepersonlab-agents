@@ -2,7 +2,7 @@
 
 ## AI-Driven Multi-Discipline Research Collaboration Platform
 
-A multi-agent system for interdisciplinary scientific research, inspired by the ancient Chinese "Three Departments and Six Ministries" governance model. Each agent is a specialized researcher with defined expertise, communication protocols, and deliverables.
+An One-person-multi-agent laboratory for interdisciplinary scientific research. Each agent is a specialized researcher with defined expertise, communication protocols, and deliverables.
 
 **12 AI Agents** (4 coordination roles + 8 discipline PIs) form a complete research workflow: Lab Director triages, Planning Office designs, Review Board approves, Operations Office coordinates, and 8 Discipline PIs execute.
 
