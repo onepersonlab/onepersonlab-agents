@@ -305,8 +305,4 @@ MIT License — See [LICENSE](LICENSE) for details.
 
 ---
 
-> 🧪 **Governing research with the wisdom of ancient empires**
-> 
-> *以古制御新技，以智慧驾驭 AI*
-> 
-> © 2026 OnePersonLab. All rights reserved.
+© 2026 OnePersonLab. All rights reserved.
