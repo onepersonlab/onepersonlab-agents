@@ -359,9 +359,9 @@ MIT License — See [LICENSE](LICENSE) for details.
 
 ## 🙏 Acknowledgments
 
-- Inspired by the ancient Chinese "Three Departments and Six Ministries" (三省六部制) governance system (618-907 AD)
-- Built on [OpenClaw](https://openclaw.ai) multi-agent framework
+- Inspired by the ancient Chinese "Three Departments and Six Ministries" (三省六部制) governance system
 - Original concept from [edict-20260301](https://github.com/ingeniousfrog/edict-20260301)
+- Built on [OpenClaw](https://openclaw.ai/) multi-agent framework
 
 ---
 
