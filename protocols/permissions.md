@@ -226,20 +226,20 @@ Key Findings: [...]
 
 ## 🔬 Role Reference
 
-| OnePersonLab Role | Agent ID | Original Role |
-|-------------|----------|---------------|
-| Lab Director | `lab_director` | 太子 |
-| Planning Office | `planning_office` | 中书省 |
-| Review Board | `review_board` | 门下省 |
-| Operations Office | `operations_office` | 尚书省 |
-| PI, Computer Science | `pi_cs` | 兵部 (CS) |
-| PI, Chemistry | `pi_chem` | 工部 (Chem) |
-| PI, Biology | `pi_bio` | 工部 (Bio) |
-| PI, Materials | `pi_mat` | 工部 (Mat) |
-| PI, Medicine | `pi_med` | 工部 (Med) |
-| PI, Agriculture | `pi_agr` | 户部 (Agr) |
-| PI, Environmental | `pi_env` | 户部 (Env) |
-| PI, Engineering | `pi_eng` | 工部 (Eng) |
+| Role | Agent ID |
+|------|----------|
+| Lab Director | `lab_director` |
+| Planning Office | `planning_office` |
+| Review Board | `review_board` |
+| Operations Office | `operations_office` |
+| PI, Computer Science | `pi_cs` |
+| PI, Chemistry | `pi_chem` |
+| PI, Biology | `pi_bio` |
+| PI, Materials | `pi_mat` |
+| PI, Medicine | `pi_med` |
+| PI, Agriculture | `pi_agr` |
+| PI, Environmental | `pi_env` |
+| PI, Engineering | `pi_eng` |
 
 ---
 
