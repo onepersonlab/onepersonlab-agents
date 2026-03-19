@@ -50,7 +50,7 @@ bash scripts/run_loop.sh &
 python3 dashboard/server.py
 
 # 2. Open dashboard
-open http://127.0.0.1:7891
+open http://127.0.0.1:9731
 ```
 
 ---
@@ -150,12 +150,12 @@ See [`protocols/permissions.md`](protocols/permissions.md) for complete rules.
    Focus on: target identification, compound screening, and ADME-Tox prediction.
    ```
 3. **Lab Director triages** and creates task `OPL-YYYYMMDD-NNN`
-4. **Watch progress** on dashboard: http://127.0.0.1:7891
+4. **Watch progress** on dashboard: http://127.0.0.1:9731
 5. **Receive final report** via same messaging channel
 
 ### Via Dashboard
 
-1. **Open dashboard**: http://127.0.0.1:7891
+1. **Open dashboard**: http://127.0.0.1:9731
 2. **View active directives** in Task Dashboard tab
 3. **Monitor progress** by department in Dept Coordination tab
 4. **Review completed** tasks in Archive tab

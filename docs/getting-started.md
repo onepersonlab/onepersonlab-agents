@@ -92,7 +92,7 @@ python3 dashboard/server.py
 ### Open Dashboard
 
 ```bash
-open http://127.0.0.1:7891
+open http://127.0.0.1:9731
 ```
 
 You should see the OnePersonLab Dashboard with:
@@ -208,7 +208,7 @@ cat ~/.openclaw/openclaw.json | jq '.agents.list[] | .id'
 # Look for errors in terminal where server.py is running
 
 # Verify port not in use
-lsof -i :7891
+lsof -i :9731
 
 # Restart server
 python3 dashboard/server.py
