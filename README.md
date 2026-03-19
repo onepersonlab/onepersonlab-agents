@@ -235,9 +235,6 @@ OPMALab/
 │   └── ...
 ├── protocols/                  # Process documentation
 │   └── permissions.md          # Permission matrix
-├── docs/                       # Documentation
-│   ├── getting-started.md      # Setup guide
-│   └── screenshots/            # UI screenshots
 ├── examples/                   # Usage examples
 │   ├── drug-discovery.md       # Drug discovery case
 │   ├── climate-assessment.md   # Climate case
