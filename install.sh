@@ -128,31 +128,28 @@ AGENTS = [
     {"id": "pi_eng",     "subagents": {"allowAgents": ["operations_office"]}},
 ]
 
-# Clean up existing OPMALab agents first
-OPMALAB_IDS = {ag["id"] for ag in AGENTS}
+# Fresh install: clear ALL existing agents and start fresh
 agents_cfg = cfg.setdefault('agents', {})
-agents_list = agents_cfg.get('list', [])
+old_agents = agents_cfg.get('list', [])
+old_count = len(old_agents)
 
-# Remove old OPMALab agents (keep other agents like taizi)
-cleaned_list = [a for a in agents_list if a['id'] not in OPMALAB_IDS]
-removed_count = len(agents_list) - len(cleaned_list)
-if removed_count > 0:
-    print(f'  - removed {removed_count} old OPMALab agents')
+# Clear all agents - fresh start for OPMALab only
+agents_list = []
 
-agents_list = cleaned_list
-existing_ids = {a['id'] for a in agents_list}
+if old_count > 0:
+    print(f'  - cleared {old_count} old agents (fresh install)')
 
+# Register OPMALab agents
 added = 0
 for ag in AGENTS:
     ag_id = ag['id']
     ws = str(pathlib.Path.home() / f'.openclaw/workspace-{ag_id}')
-    if ag_id not in existing_ids:
-        entry = {'id': ag_id, 'workspace': ws, **{k:v for k,v in ag.items() if k!='id'}}
-        agents_list.append(entry)
-        added += 1
-        print(f'  + added: {ag_id}')
-    else:
-        print(f'  ~ exists: {ag_id} (skipped)')
+    entry = {'id': ag_id, 'workspace': ws, **{k:v for k,v in ag.items() if k!='id'}}
+    agents_list.append(entry)
+    added += 1
+    print(f'  + registered: {ag_id}')
+
+print(f'  ✓ {added} OPMALab agents registered (fresh install)')
 
 agents_cfg['list'] = agents_list
 cfg_path.write_text(json.dumps(cfg, ensure_ascii=False, indent=2))
