@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-三省六部 · 看板本地 API 服务器
-Port: 9731 (可通过 --port 修改)
+# Reference: https://github.com/ingeniousfrog/edict-20260301
+# Three Departments and Six Ministries · Kanban Local API Server
+# Port: 9731 (modify via --port)
 
 Endpoints:
   GET  /                       → dashboard.html
