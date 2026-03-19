@@ -23,7 +23,7 @@ More **institutional oversight** than CrewAI, more **real-time visibility** than
 
 ### Prerequisites
 
-- **OpenClaw** installed and initialized: `openclaw init`
+- **OpenClaw** installed and working
 
 ### Installation
 
