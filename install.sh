@@ -128,8 +128,18 @@ AGENTS = [
     {"id": "pi_eng",     "subagents": {"allowAgents": ["operations_office"]}},
 ]
 
+# Clean up existing OPMALab agents first
+OPMALAB_IDS = {ag["id"] for ag in AGENTS}
 agents_cfg = cfg.setdefault('agents', {})
 agents_list = agents_cfg.get('list', [])
+
+# Remove old OPMALab agents (keep other agents like taizi)
+cleaned_list = [a for a in agents_list if a['id'] not in OPMALAB_IDS]
+removed_count = len(agents_list) - len(cleaned_list)
+if removed_count > 0:
+    print(f'  - removed {removed_count} old OPMALab agents')
+
+agents_list = cleaned_list
 existing_ids = {a['id'] for a in agents_list}
 
 added = 0
