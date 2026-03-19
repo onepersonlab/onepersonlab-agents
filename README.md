@@ -29,8 +29,8 @@ More **institutional oversight** than CrewAI, more **real-time visibility** than
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/onepersonlab/onepersonlab-agents.git
-cd onepersonlab-agents
+git clone https://github.com/onepersonlab/OPMALab.git
+cd OPMALab
 
 # 2. Run installer
 chmod +x install.sh && ./install.sh
@@ -219,7 +219,7 @@ See [`examples/`](examples/) for more detailed case studies.
 ## 📁 Project Structure
 
 ```
-onepersonlab-agents/
+OPMALab/
 ├── agents/                     # 12 Agent SOUL.md definitions
 │   ├── lab_director/           # Triage & coordination
 │   ├── planning_office/        # Strategy & planning
@@ -268,8 +268,8 @@ Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ```bash
 # Fork and clone
-git clone https://github.com/onepersonlab/onepersonlab-agents.git
-cd onepersonlab-agents
+git clone https://github.com/onepersonlab/OPMALab.git
+cd OPMALab
 
 # Install dependencies (if any)
 pip install -r requirements.txt  # Coming soon
@@ -301,7 +301,7 @@ MIT License — See [LICENSE](LICENSE) for details.
 - **Documentation**: https://docs.openclaw.ai
 - **Community**: https://discord.gg/clawd
 - **Skill Hub**: https://clawhub.com
-- **Issue Tracker**: https://github.com/onepersonlab/onepersonlab-agents/issues
+- **Issue Tracker**: https://github.com/onepersonlab/OPMALab/issues
 
 ---
 
